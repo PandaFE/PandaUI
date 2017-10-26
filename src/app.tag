@@ -1,10 +1,9 @@
 <app>
   <div>
-    riot
+    <p-button></p-button>
   </div>
 
   <script>
-    let a = [0, 1, 2]
-    console.log('jojo', ...a)
+    import './button.tag'
   </script>
 </app>

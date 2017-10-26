@@ -1,7 +1,7 @@
 var path = require('path')
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '../', dir)
 }
 
 module.exports = {
@@ -9,9 +9,9 @@ module.exports = {
     main: './entries/main.js'
   },
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: resolve('dist'),
     filename: '[name].js',
-    publicPath: './'
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.tag', '.json'],
@@ -32,7 +32,10 @@ module.exports = {
       },
       {
         test: /\.tag$/,
-        loader: ['riot-tag-loader']
+        loader: 'riot-tag-loader',
+        options: {
+          hot: true
+        }
       },
       {
         test: /\.js|tag/,
