@@ -1,7 +1,7 @@
 <app>
-  <sample />
-
+  <routes />
+  
   <script>
-    import './pages/sample'
+    import './routes'
   </script>
 </app>

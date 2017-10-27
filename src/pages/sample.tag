@@ -3,5 +3,9 @@
 
   <script>
     import '@/button'
+
+    this.on('route', () => {
+      console.log('routed to /')
+    })
   </script>
 </sample>

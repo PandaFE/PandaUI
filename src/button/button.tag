@@ -1,5 +1,5 @@
 <p-button>
-  <button>panda button</button>
+  <a href="/s">go</a>
 
   <script>
     import './button.scss'

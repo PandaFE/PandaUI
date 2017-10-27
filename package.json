@@ -20,7 +20,8 @@
   "author": "@pandafe",
   "license": "MIT",
   "dependencies": {
-    "riot": "^3.7.3"
+    "riot": "^3.7.3",
+    "riot-route": "^3.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
