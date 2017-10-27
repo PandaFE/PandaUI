@@ -2,7 +2,7 @@
   "name": "pandaui",
   "version": "1.0.0",
   "description": "pandaui",
-  "main": "index.js",
+  "main": "entries/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node build/dev-server.js"
