@@ -1,3 +1,7 @@
 <p-button>
-  <div>panda button</div>
+  <button>panda button</button>
+
+  <script>
+    import './button.scss'
+  </script>
 </p-button>

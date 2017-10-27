@@ -16,7 +16,8 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.tag', '.json'],
     alias: {
-      '@': resolve('src')
+      '@': resolve('src'),
+      'theme': resolve('src/theme')
     }
   },
   module: {

@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production'
+
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
