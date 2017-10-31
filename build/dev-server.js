@@ -51,6 +51,8 @@ app.use(devMiddleware)
 // compilation error display
 app.use(hotMiddleware)
 
+app.use(express.static(path.posix.join(__dirname, '..', 'static')))
+
 var uri = 'http://localhost:' + port
 
 console.log('> Starting dev server...')
