@@ -1,4 +1,19 @@
-$color: red;
-
 $white: #fff;
 $black: #000;
+$grey: #aaa;
+
+@each $key, $value in (
+  white: $white,
+  black: $black,
+  grey: $grey
+) {
+  .color-#{$key} {
+    color: $value;
+  }
+}
+
+@each $key, $value in (xs: 10px, sm: 12px, md: 14px, lg: 16px) {
+  .font-#{$key} {
+    font-size: $value;
+  }
+}

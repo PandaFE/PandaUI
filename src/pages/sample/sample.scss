@@ -1,5 +1,38 @@
 @import "~theme/default.scss";
 
-.sample__page {
+.page__brief {
   text-align: center;
+}
+
+.slogan {
+  margin: 10px 0;
+}
+
+.component__list {
+  margin-top: 5px;
+  padding-left: 10px;
+  border: 1px solid $grey;
+  border-width: 1px 0;
+}
+
+.component__link {
+  line-height: 50px;
+  border-bottom: 1px solid $grey;
+
+  &:last-child {
+    border: none;
+  }
+
+  > a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    @extend .color-black;
+    cursor: pointer;
+  }
+}
+
+.component__subtitle {
+  @extend .font-sm;
+  @extend .color-grey;
 }
