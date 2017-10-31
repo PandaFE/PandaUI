@@ -1,5 +1,5 @@
 <p-button>
-  <a href="/s">route sample</a>
+  <a href="/s">route sample </a>
 
   <script>
     import './button.scss'
