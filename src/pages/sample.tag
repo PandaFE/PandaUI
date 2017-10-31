@@ -1,17 +1,23 @@
 <sample>
-  <img src='/img/logo.png' alt="">
-  <div>jojo</div>
-  <div>jo</div>
-  <list data={this.list} />
+  <div class="sample__page">
+    <img src='/img/logo.png' alt="">
+
+    <ul>
+      <li each={ list }>
+        <a href={ route }> { label } </a>
+      </li>
+    </ul>
+  </div>
 
   <script>
-    import '@/button'
-    import '@/list'
+    import './sample/sample.scss'
 
-    this.list = [1, 2, 3]
-
-    this.on('route', () => {
-      console.log('routed to /')
-    })
+    this.list = [{
+      label: '轮播',
+      route: '/carousel'
+    }, {
+      label: '下拉选择器',
+      route: '/select'
+    }]
   </script>
 </sample>
