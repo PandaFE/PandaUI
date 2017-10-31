@@ -1,0 +1,41 @@
+$width: 4px;
+
+.p-nf {
+  background: $white;
+}
+
+.p-nf__container {
+  position: absolute;
+  height: 20px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.p-nf__holder {
+  display: inline-block;
+  height: 100%;
+  border: $width solid $black;
+  border-width: 0 $width;
+
+  &::before,
+  &::after {
+    display: inline-block;
+    height: 100%;
+    width: $width;
+    margin-left: $width;
+    background: $black;
+    content: '';
+  }
+
+  &::after {
+    margin-right: $width;
+  }
+
+  &:last-child {
+    margin-left: $width * 3;
+  }
+}
