@@ -3,6 +3,7 @@
 .carousel {
   width: 100%;
   overflow: hidden;
+  position: relative;
 
   ul {
     width: 2000px;
@@ -24,4 +25,5 @@
       height: 0;
     }
   }
+
 }
