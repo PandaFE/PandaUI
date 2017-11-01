@@ -1,0 +1,27 @@
+@import "~theme/default.scss";
+
+.carousel {
+  width: 100%;
+  overflow: hidden;
+
+  ul {
+    width: 2000px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all .3s linear;
+
+    li {
+      float: left;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+      visibility: hidden;
+      line-height: 0;
+      height: 0;
+    }
+  }
+}
