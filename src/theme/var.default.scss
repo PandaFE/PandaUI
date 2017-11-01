@@ -1,11 +1,13 @@
 $white: #fff;
 $black: #000;
 $grey: #aaa;
+$light: #eaeaea;
 
 @each $key, $value in (
   white: $white,
   black: $black,
-  grey: $grey
+  grey: $grey,
+  light: $light
 ) {
   .color-#{$key} {
     color: $value;

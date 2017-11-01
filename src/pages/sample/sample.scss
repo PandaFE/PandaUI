@@ -9,19 +9,14 @@
 }
 
 .component__list {
-  margin-top: 5px;
-  padding-left: 10px;
-  border: 1px solid $grey;
+  margin-top: 20px;
+  padding: 0 10px;
   border-width: 1px 0;
 }
 
 .component__link {
+  position: relative;
   line-height: 50px;
-  border-bottom: 1px solid $grey;
-
-  &:last-child {
-    border: none;
-  }
 
   > a {
     display: inline-block;
@@ -29,6 +24,25 @@
     width: 100%;
     @extend .color-black;
     cursor: pointer;
+  }
+
+  &:not(:last-child)::before {
+    position: absolute;
+    top: 100%;
+    width: 95%;
+    right: 0;
+    height: 1px;
+    background: $light;
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    font-family: 'icomoon' !important;
+    content: "\E92A";
   }
 }
 
