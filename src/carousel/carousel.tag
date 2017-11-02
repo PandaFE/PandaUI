@@ -6,17 +6,6 @@
       </li>
     </ul>
   </div>
-  <style>
-    .carousel {
-      background: #1a2127;
-      width: 100%;
-      height: 146px;
-      padding: 20px 0;
-    }
-    .carousel ul {
-      top: 20px;
-    }
-  </style>
 
   <script>
     import './carousel.scss'
