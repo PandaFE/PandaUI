@@ -20,6 +20,10 @@
 
   <script>
     import './carousel.scss'
+    import Swipe from '@/local_modules/Swipe'
+
+    /* eslint-disable no-new */
+    new Swipe()
     this.speed = this.opts.carousel.speed || 3000 // 间隔时间
     this.duration = this.opts.carousel.duration || 3000 // 动画时长
     this.itemWidth = this.opts.carousel.itemWidth || 200 // li 宽度
