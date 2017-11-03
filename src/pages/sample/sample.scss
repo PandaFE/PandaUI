@@ -1,4 +1,4 @@
-@import "~theme/var.default.scss";
+@import "~theme/var.default";
 
 .page__brief {
   text-align: center;
@@ -22,7 +22,6 @@
     display: inline-block;
     height: 100%;
     width: 100%;
-    @extend .color-black;
     cursor: pointer;
   }
 
@@ -44,9 +43,4 @@
     font-family: 'icomoon' !important;
     content: "\E92A";
   }
-}
-
-.component__subtitle {
-  @extend .font-sm;
-  @extend .color-grey;
 }

@@ -1,29 +1,24 @@
-@import "~theme/var.default.scss";
+@import "~theme/var.default";
 
 .carousel {
+  position: relative;
   width: 100%;
   overflow: hidden;
-  position: relative;
+}
 
-  ul {
-    width: 2000px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    transition: all .3s linear;
-
-    li {
-      float: left;
-    }
-
-    &::after {
-      content: '';
-      display: block;
-      clear: both;
-      visibility: hidden;
-      line-height: 0;
-      height: 0;
-    }
+.carousel__stage {
+  overflow: hidden;
+  &::after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    content: '';
   }
+}
 
+.carousel__item {
+  display: inline-block;
+  float: left;
 }

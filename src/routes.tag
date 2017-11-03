@@ -1,7 +1,7 @@
 <routes>
   <router>
     <route path="/"><sample /></route>
-    <route path="/carousel"><carousel /></route>
+    <route path="/carousel"><carousel-sample /></route>
     <route path="/form"><p-form /></route>
     <route path="/select"><page-select /></route>
     <route path="*"><not-found /></route>

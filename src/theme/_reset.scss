@@ -1,3 +1,18 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+body {
+  will-change: transform;
+  -webkit-overflow-scrolling: touch;
+}
+
 body, div, p, section,
 ul, ol, li, dl, dt, dd,
 a, span, i, img,
@@ -43,9 +58,4 @@ i {
 
 canvas {
   display: block;
-}
-
-body {
-  will-change: transform;
-  -webkit-overflow-scrolling: touch;
 }

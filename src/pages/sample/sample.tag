@@ -7,10 +7,10 @@
 
     <ul class="component__list">
       <li class="component__link" each={ list }>
-        <a href={ route || '/' }>
+        <a class="color-black" href={ route || '/' }>
           <span class={'icon icon-' + (icon || 'box')}></span>
           { title }
-          <span class="component__subtitle">{ subtitle }</span>
+          <span class="component__subtitle font-sm color-grey">{ subtitle }</span>
         </a>
       </li>
     </ul>

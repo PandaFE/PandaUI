@@ -1,1 +1,9 @@
-@import "~theme/var.default.scss";
+.carousel__item {
+  width: 113px;
+  margin-right: 0;
+  text-align: center;
+}
+
+.carousel__item img {
+  width: 100%;
+}
