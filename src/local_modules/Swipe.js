@@ -69,21 +69,23 @@ class Swipe {
     }
   }
 
-  _checkLoopBounday (offset) {
-    console.log('offset', offset)
+  _checkLoopBounday (offset, withBoundry) {
+    let reset = false
     const loop = this.options.loop
     if (loop) {
       const { max, min, start, end } = loop
-      if (offset < min) {
+      if (offset < min || (withBoundry ? (offset === min) : false)) {
+        reset = true
         offset = start
         this.lastStopPos = offset + this.lastStopPos - min
       }
-      if (offset > max) {
+      if (offset > max || (withBoundry ? (offset === max) : false)) {
+        reset = true
         offset = end
         this.lastStopPos = offset + this.lastStopPos - max
       }
     }
-    return offset
+    return { offset, reset }
   }
 
   _onAnimFrame (offset, cb) {
@@ -92,7 +94,7 @@ class Swipe {
     }
 
     requestAnimationFrame(() => {
-      let stopPos = this._checkLoopBounday(this.lastStopPos + offset)
+      let { offset: stopPos } = this._checkLoopBounday(this.lastStopPos + offset)
       this.target.style.transform = `translate3d(${stopPos}px, 0, 0)`
       this.currentStopPos = stopPos
       this.RAFPending = false
@@ -102,6 +104,12 @@ class Swipe {
   }
 
   _handleTransitionEnd () {
+    let { offset, reset } = this._checkLoopBounday(this.lastStopPos, true)
+    if (reset) {
+      this.target.style.transition = 'none'
+      this.target.style.transform = `translate3d(${offset}px, 0, 0)`
+      this.lastStopPos = offset
+    }
     // this.move(0)
   }
 
