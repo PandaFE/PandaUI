@@ -14,10 +14,15 @@
         </a>
       </li>
     </ul>
+
+    <formatted-message id="s1"></formatted-message>
   </div>
 
   <script>
     import './sample.scss'
+    import '@/intl/formatted-message'
+
+    this.render = msg => ('<p>jojo</p>')
 
     this.list = [{
       icon: 'image',
