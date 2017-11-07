@@ -14,7 +14,7 @@ let isSupportPassive = false
 const eventOpts = isSupportPassive ? { passive: true } : false
 const gestureEvents = window.TouchEvent
   ? ['touchstart', 'touchmove', 'touchend', 'touchcancel']
-  : ['mousedown', 'mousemove', 'mouseup']
+  : ['mousedown', 'mousemove', 'mouseup', 'mouseout']
 
 class Swipe {
   constructor (options) {
@@ -33,35 +33,27 @@ class Swipe {
       move () {},
       end () {}
     }, options)
+    this.target = options.target
     this.initialTouchPos = null
     this.lastTouchPos = null
-    this.currentOffset = 0
-    this.lastOffset = 0
+    this.currentStopPos = 0
+    this.lastStopPos = 0
     this.RAFPending = false
     this._handleGestureStart = this._handleGestureStart.bind(this)
     this._handleGestureMove = this._handleGestureMove.bind(this)
     this._handleGestureEnd = this._handleGestureEnd.bind(this)
+    this._handleTransitionEnd = this._handleTransitionEnd.bind(this)
     return true
   }
 
   _init (options) {
     if (this._default(options)) {
-      const target = options.target
       if (options.loop && options.loop.start) {
-        this.moveTo(options.loop.start)
+        this.move(options.loop.start)
       }
-      target.addEventListener(gestureEvents[0], this._handleGestureStart, eventOpts)
+      this.target.addEventListener(gestureEvents[0], this._handleGestureStart, eventOpts)
+      this.target.addEventListener('webkitTransitionEnd', this._handleTransitionEnd)
     }
-  }
-
-  moveTo (position) {
-    if (this.RAFPending) {
-      return
-    }
-    this.RAFPending = true
-    this._onAnimFrame(position, () => {
-      this.lastOffset = position
-    })
   }
 
   _getGesturePointFromEvent (evt) {
@@ -78,16 +70,17 @@ class Swipe {
   }
 
   _checkLoopBounday (offset) {
+    console.log('offset', offset)
     const loop = this.options.loop
     if (loop) {
       const { max, min, start, end } = loop
-      if (offset < max) {
+      if (offset < min) {
         offset = start
-        this.lastOffset = offset + this.lastOffset - max
+        this.lastStopPos = offset + this.lastStopPos - min
       }
-      if (offset > min) {
+      if (offset > max) {
         offset = end
-        this.lastOffset = offset + this.lastOffset - min
+        this.lastStopPos = offset + this.lastStopPos - max
       }
     }
     return offset
@@ -99,25 +92,29 @@ class Swipe {
     }
 
     requestAnimationFrame(() => {
-      offset = this._checkLoopBounday(offset)
-      this.options.target.style.transform = `translate3d(${offset}px, 0, 0)`
-      this.currentOffset = offset
+      let stopPos = this._checkLoopBounday(this.lastStopPos + offset)
+      this.target.style.transform = `translate3d(${stopPos}px, 0, 0)`
+      this.currentStopPos = stopPos
       this.RAFPending = false
-      this.options.move(offset)
+      this.options.move(stopPos)
       cb && cb()
     })
+  }
+
+  _handleTransitionEnd () {
+    // this.move(0)
   }
 
   _handleGestureStart (evt) {
     if (!isSupportPassive) {
       evt.preventDefault()
     }
-    const target = this.options.target
     this.options.start()
-    target.addEventListener(gestureEvents[1], this._handleGestureMove, eventOpts)
-    target.addEventListener(gestureEvents[2], this._handleGestureEnd, eventOpts)
+    this.target.addEventListener(gestureEvents[1], this._handleGestureMove, eventOpts)
+    this.target.addEventListener(gestureEvents[2], this._handleGestureEnd, eventOpts)
+    this.target.addEventListener(gestureEvents[3], this._handleGestureEnd, eventOpts)
     this.initialTouchPos = this._getGesturePointFromEvent(evt)
-    target.style.transition = 'initial'
+    this.target.style.transition = 'none'
   }
 
   _handleGestureMove (evt) {
@@ -129,17 +126,34 @@ class Swipe {
     }
     this.RAFPending = true
     this.lastTouchPos = this._getGesturePointFromEvent(evt)
-    this._onAnimFrame(this.lastOffset + this.lastTouchPos.x - this.initialTouchPos.x)
+    this._onAnimFrame(this.lastTouchPos.x - this.initialTouchPos.x)
   }
 
   _handleGestureEnd (evt) {
-    const target = this.options.target
-    this.options.end(this.lastOffset, this.currentOffset - this.lastOffset)
-    this.lastOffset = this.currentOffset
-    target.removeEventListener(gestureEvents[1], this._handleGestureMove, eventOpts)
-    target.removeEventListener(gestureEvents[2], this._handleGestureEnd, eventOpts)
+    this.target.removeEventListener(gestureEvents[1], this._handleGestureMove, eventOpts)
+    this.target.removeEventListener(gestureEvents[2], this._handleGestureEnd, eventOpts)
+    this.target.removeEventListener(gestureEvents[3], this._handleGestureEnd, eventOpts)
     this.RAFPending = false
     this.initialTouchPos = null
+    // !!!
+    if (this.options.end(this.lastStopPos, this.currentStopPos - this.lastStopPos) !== false) {
+      this.lastStopPos = this.currentStopPos
+    }
+  }
+
+  move (position, withAnimation) {
+    if (this.RAFPending) {
+      return
+    }
+    if (withAnimation) {
+      this.target.style.transition = 'transform 250ms ease-out'
+    } else {
+      this.target.style.transition = 'none'
+    }
+    this.RAFPending = true
+    this._onAnimFrame(position, () => {
+      this.lastStopPos += position
+    })
   }
 }
 

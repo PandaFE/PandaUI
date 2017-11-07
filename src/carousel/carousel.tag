@@ -14,15 +14,18 @@
     let {
       itemHeight = 200,
       itemWidth = 200,
-      itemMarginr = 0
-    } = this.opts.carousel
-    itemWidth += itemMarginr
+      itemMarginr = 0,
+      threshold = 50,
+      timeout = 2000
+    } = this.opts.carousel || {}
     let $stage = null // 触摸对象
     let swipeWidth = 0
     let itemCount = 0
     let itemInView = 0
-
+    itemWidth += itemMarginr
     this.height = itemHeight
+    this.interval = null
+    this.swiper = null
 
     const clone = (nodes, start, end) => {
       let fragment = new DocumentFragment()
@@ -42,6 +45,16 @@
       $stage.style.display = 'block'
     }
 
+    const setup = () => {
+      this.interval = setInterval(() => {
+        this.swiper.move(-itemWidth, true)
+      }, timeout)
+    }
+
+    const stop = () => {
+      clearInterval(this.interval)
+    }
+
     this.on('mount', () => {
       $stage = this.refs.stage
       itemCount = $stage.children.length
@@ -49,20 +62,30 @@
       itemInView = Math.min(Math.ceil(swipeWidth / itemWidth), itemCount)
       closeTrap()
       /* eslint-disable no-new */
-      new Swipe({
+      this.swiper = new Swipe({
         target: $stage,
         loop: {
           start: -itemInView * itemWidth,
           end: swipeWidth - (itemInView + itemCount) * itemWidth,
-          min: swipeWidth - (itemInView * itemWidth),
-          max: -(itemInView + itemCount) * itemWidth
+          max: swipeWidth - (itemInView * itemWidth),
+          min: -(itemInView + itemCount) * itemWidth
         },
-        start: () => {},
-        move: () => {},
+        start: () => {
+          stop()
+        },
         end: (start, offset) => {
-          console.log('swipe end', start, offset)
+          const absOffset = Math.abs(offset)
+          const dir = offset / absOffset
+          this.swiper.move(itemWidth * (Math.floor(absOffset / itemWidth) + (absOffset >= threshold ? 1 : 0)) * dir, true)
+          setup()
+          return false
         }
       })
+      setup()
+    })
+
+    this.on('unmount', () => {
+      stop()
     })
   </script>
 </carousel>
