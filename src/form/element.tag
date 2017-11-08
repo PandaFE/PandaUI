@@ -1,4 +1,4 @@
-<element>
+<form-element>
   <div class="element__label">
     <label for={id}>
       {opts.label}
@@ -17,4 +17,4 @@
     this.opts = this.opts.config || {}
     this.id = `_${Math.random().toString(32).slice(2)}`
   </script>
-</element>
+</form-element>
