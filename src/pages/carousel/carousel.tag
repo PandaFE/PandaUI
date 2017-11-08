@@ -1,4 +1,4 @@
-<carousel-sample>
+<page-carousel>
   <carousel item={ item } carousel={ carousel }>
     <img src={ img } alt="">
   </carousel>
@@ -29,4 +29,4 @@
       img: 'img/carousel/img_06.png'
     }]
   </script>
-</carousel-sample>
+</page-carousel>

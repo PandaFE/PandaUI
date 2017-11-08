@@ -1,0 +1,27 @@
+// common color vars
+@each $key, $value in $colors {
+  .color-#{$key} {
+    color: $value;
+  }
+}
+
+// font size
+@each $key, $value in $font-sizes {
+  .font-#{$key} {
+    font-size: $value;
+  }
+}
+
+// box model size
+@each $var, $value in $gaps {
+  @each $type in (margin, padding) {
+    .#{$type}-#{$var} {
+      #{$type}: $value;
+    }
+    @each $dir in (top, right, bottom, left) {
+      .#{$type}-#{$dir}-#{$var} {
+        #{$type}-#{$dir}: $value;
+      }
+    }
+  }
+}

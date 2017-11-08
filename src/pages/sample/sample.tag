@@ -14,13 +14,10 @@
         </a>
       </li>
     </ul>
-
-    <formatted-message id="s1"></formatted-message>
   </div>
 
   <script>
     import './sample.scss'
-    import '@/intl/formatted-message'
 
     this.render = msg => ('<p>jojo</p>')
 
@@ -55,6 +52,9 @@
     }, {
       title: '滚动视窗',
       route: 'scroll'
+    }, {
+      title: '国际化',
+      route: 'intl'
     }]
   </script>
 </sample>

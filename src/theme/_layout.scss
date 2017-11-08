@@ -1,0 +1,42 @@
+.hide {
+  display: none;
+}
+
+.inner-inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix::after {
+  display: block;
+  clear: both;
+  content: '';
+}

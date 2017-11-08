@@ -1,0 +1,13 @@
+@import "~theme/var.default";
+
+.toggle__outline {
+  width: 20px;
+  height: 20px;
+  border: 1px solid $grey;
+  border-radius: $border-radius;
+}
+
+input:checked + .toggle__outline {
+  background: url(./check.png) center no-repeat;
+  background-size: 15px;
+}

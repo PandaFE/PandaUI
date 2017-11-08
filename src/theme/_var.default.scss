@@ -2,3 +2,9 @@ $white: #fff;
 $black: #000;
 $grey: #aaa;
 $light: #eaeaea;
+
+$colors: (white: $white, black: $black, grey: $grey, light: $light);
+$font-sizes: (xs: 10px, sm: 12px, md: 14px, lg: 16px);
+$gaps: (xs: 2px, sm: 5px, md: 10px, lg: 20px);
+
+$border-radius: 5px;

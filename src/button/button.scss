@@ -1,0 +1,9 @@
+@import "~theme/var.default";
+
+.btn {
+  display: block;
+  width: 100%;
+  min-height: 40px;
+  border-radius: $border-radius;
+  border: 1px solid grey;
+}

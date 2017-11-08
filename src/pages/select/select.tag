@@ -22,7 +22,7 @@
   </div>
   <script>
     import '@/select'
-    import './selectpage.scss'
+    import './select.scss'
 
     // PC
     this.pcSelectIcon = '/img/open.png'
