@@ -18,6 +18,12 @@
     .#{$type}-#{$var} {
       #{$type}: $value;
     }
+    .#{$type}-h-#{$var} {
+      #{$type}: 0 $value;
+    }
+    .#{$type}-v-#{$var} {
+      #{$type}: $value 0;
+    }
     @each $dir in (top, right, bottom, left) {
       .#{$type}-#{$dir}-#{$var} {
         #{$type}-#{$dir}: $value;
