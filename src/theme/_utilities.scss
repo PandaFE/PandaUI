@@ -3,6 +3,9 @@
   .color-#{$key} {
     color: $value;
   }
+  .bg-#{$key} {
+    background-color: $value;
+  }
 }
 
 // font size
