@@ -1,5 +1,5 @@
 <selector-dialog>
-  <p-dialog show={show} position="center">
+  <p-dialog show={show} position="center" class-name="selector">
     <yield to="body">
       <ul if={!parent.isMultiCols} class="select__list popup" onclick={parent.handleClick}>
         <li each={item, index in parent.opts.list} class="select__option" data-index={index} key={index}>
