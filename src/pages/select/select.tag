@@ -2,6 +2,10 @@
   <form-element type="select" label="默认选择器" list={[1, 2, 3]}></form-element>
   <form-element type="select" label="浮动式式选项列表" list={[1, 2, 3]} float={true}></form-element>
   <form-element type="select" label="弹窗式选项列表" list={[1, 2, 3, 4, 5, 6]} dialog={true}></form-element>
+  <form-element type="select" label="弹窗式选项列表" list={[1, 2, 3, 4, 5, 6]} dialog={true}></form-element>
+  <form-element type="select" label="弹窗式选项列表" list={[1, 2, 3, 4, 5, 6]} dialog={true}></form-element>
+  <form-element type="select" label="弹窗式选项列表" list={[1, 2, 3, 4, 5, 6]} dialog={true}></form-element>
+  <form-element type="select" label="弹窗式选项列表" list={[1, 2, 3, 4, 5, 6]} dialog={true}></form-element>
 
   <script>
     import '@/form/element'

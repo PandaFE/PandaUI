@@ -1,5 +1,7 @@
 <app>
-  <virtual data-is="routes"></virtual>
+  <div id="scroll">
+    <virtual data-is="routes"></virtual>
+  </div>
 
   <script>
     import './theme/default.scss'
