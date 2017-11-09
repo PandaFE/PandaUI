@@ -1,7 +1,5 @@
-<page-input>
-  <div class="margin-top-lg margin-md">
-    <element config={{type: 'input', label: 'normal'}}></element>
-  </div>
+<page-input class="sample-page">
+  <form-element type="input" label="normal"></form-element>
 
   <script>
     import '@/form/element'

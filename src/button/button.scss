@@ -1,7 +1,11 @@
 @import "~theme/var.default";
 
-.btn {
+.button {
   display: block;
+  width: 100%;
+}
+
+.btn {
   width: 100%;
   min-height: 40px;
   border: none;

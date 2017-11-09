@@ -4,3 +4,21 @@
 @import "notfound";
 @import "utilities";
 @import "layout";
+
+body {
+  background: #f6f6f6;
+}
+
+.element__label {
+  margin-bottom: 5px;
+}
+
+.sample-page {
+  display: block;
+  padding: 20px 10px;
+
+  .form__element {
+    display: block;
+    padding: 10px 0 20px;
+  }
+}

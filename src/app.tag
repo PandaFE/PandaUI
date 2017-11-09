@@ -1,5 +1,5 @@
 <app>
-  <routes />
+  <virtual data-is="routes"></virtual>
 
   <script>
     import './theme/default.scss'

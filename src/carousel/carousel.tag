@@ -1,11 +1,9 @@
-<carousel>
-  <div class="carousel">
-    <ul ref="stage" class="carousel__stage" style={{ height: height + 'px'}}>
-      <li class="carousel__item" each={ opts.item } >
-        <yield/>
-      </li>
-    </ul>
-  </div>
+<carousel class="carousel">
+  <ul ref="stage" class="carousel__stage" style={{ height: height + 'px'}}>
+    <li class="carousel__item" each={ opts.item } >
+      <yield/>
+    </li>
+  </ul>
 
   <script>
     import './carousel.scss'

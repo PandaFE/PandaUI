@@ -1,4 +1,4 @@
-<page-carousel>
+<page-carousel class="sample-page">
   <carousel item={ item } carousel={ carousel }>
     <img src={ img } alt="">
   </carousel>

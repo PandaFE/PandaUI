@@ -14,7 +14,8 @@
     import '@/select'
     import '@/toggle'
 
-    this.opts = this.opts.config || {}
+    this.root.className += 'form__element'
+    this.extend(this.opts, this.opts.config)
     this.id = `_${Math.random().toString(32).slice(2)}`
   </script>
 </form-element>

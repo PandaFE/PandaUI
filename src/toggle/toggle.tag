@@ -1,4 +1,4 @@
-<toggle>
+<toggle class="toggle">
   <label class="toggle__label {opts.type}">
     <input class="hide" type={opts.type === 'radio' ? 'radio' : 'checkbox'} />
     <span class="toggle__outline inner-inline-block"></span>

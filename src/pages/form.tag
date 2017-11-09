@@ -21,7 +21,7 @@
       title: 'Toggle',
       route: '/toggle'
     }, {
-      title: '下拉选择器',
+      title: '选择器',
       route: '/select'
     }, {
       title: '滑动取值器',

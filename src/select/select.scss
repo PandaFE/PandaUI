@@ -1,120 +1,55 @@
 @import "~theme/var.default";
 
-.select-component,
-.select-component-pc {
-  width: 300px;
-  height: 40px;
-}
-
-.select-component-labal,
-.select-component-labal-pc {
-  line-height: 40px;
-  background-color: #aaa;
-  padding-left: 20px;
-}
-
-.select-component-option-wrap-pc {
-  margin-top: 10px;
-  width: 300px;
-  background-color: #aaa;
+.select {
   position: relative;
-  z-index: 2;
-}
-
-.select-component-option-pc {
-  width: 100%;
-  height: 40px;
+  display: block;
   line-height: 40px;
-  padding-left: 20px;
-  transition: all .5s;
+  border: 1px solid $light;
+  border-radius: $border-radius;
+  background: $white;
+  padding: 0 10px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    font-family: icomoon;
+    content: "\E928";
+  }
+
+  &.active {
+    border-color: transparent;
+    box-shadow: 0 0 10px rgba($black, .1);
+  }
 }
 
-.select-component-option-pc:hover {
-  background-color: #000;
-  color: #fff;
+.select__list {
+  margin-bottom: 10px;
+  border-top: 1px solid $light;
+  min-height: 40px;
+  max-height: 200px;
+  background: $white;
+  overflow: auto;
+
+  &.float {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    left: 0;
+    margin-top: 10px;
+    padding: 0 10px;
+    border-top: none;
+    border-radius: $border-radius;
+    box-shadow: 0 0 10px rgba($black, .1);
+  }
+
+  &.popup {
+    border-top: none;
+  }
 }
 
-.select-component-option-wrap {
-  position: fixed;
-  width: 100%;
-  left: 0px;
-  bottom: 0px;
-  background: #fcfcfc;
-  height: auto;
-  text-align: center;
-  z-index: 20;
-  box-shadow: 0px 0px 10px #999;
-}
-
-.select-component-controls {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  background: rgb(234, 234, 234);
-}
-
-.select-component-cancel {
-  flex: 1;
-  padding: 10px 20px;
-  text-align: left;
-  color: #999;
-}
-
-.select-component-confirm {
-  flex: 1;
-  padding: 10px 20px;
-  text-align: right;
-  color: #4976e6;
-}
-
-.select-component-columns {
-  display: flex;
-}
-
-.select-component-column {
-  background: rgb(252, 252, 252);
-  display: inline-block;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  position: relative;
-  z-index: 0;
-}
-
-.select-component-panel {
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  left: 0px;
-  font-size: 20px;
-  color: rgb(51, 51, 51);
-  z-index: 80;
-}
-
-.select-component-option {
-  height: 40px;
+.select__option {
   line-height: 40px;
-}
-
-.select-component-option.active {
-  color: #4976e6;
-}
-
-.select-component-selected {
-  position: absolute;
-  top: 40%;
-  left: 10%;
-  width: 80%;
-  height: 20%;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  z-index: 50;
-}
-
-.select-component-mask {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
 }

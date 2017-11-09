@@ -1,4 +1,4 @@
-<page-button>
+<page-button class="sample-page">
   <p-button>Button</p-button>
 
   <script>

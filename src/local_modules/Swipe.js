@@ -14,7 +14,7 @@ let isSupportPassive = false
 const eventOpts = isSupportPassive ? { passive: true } : false
 const gestureEvents = window.TouchEvent
   ? ['touchstart', 'touchmove', 'touchend', 'touchcancel']
-  : ['mousedown', 'mousemove', 'mouseup', 'mouseout']
+  : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
 
 class Swipe {
   constructor (options) {

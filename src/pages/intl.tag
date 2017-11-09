@@ -1,4 +1,4 @@
-<page-intl>
+<page-intl class="sample-page">
   <formatted-message id="s1"></formatted-message>
 
   <script>

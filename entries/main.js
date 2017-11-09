@@ -9,4 +9,4 @@ riot.mixin({
   extend
 })
 route.base('/')
-riot.mount('app')
+riot.mount('#app', 'app')

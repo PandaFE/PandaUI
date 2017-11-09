@@ -1,0 +1,36 @@
+@import "~theme/var.default";
+
+.dialog__mask.show {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba($black, .2);
+}
+
+.dialog {
+  display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background: $white;
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  &.top {
+    top: 0;
+  }
+
+  &.center {
+    top: 50%;
+    width: 70%;
+    transform: translateY(-50%);
+  }
+
+  &.bottom {
+    bottom: 0;
+  }
+}

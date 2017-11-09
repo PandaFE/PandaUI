@@ -1,4 +1,4 @@
-<formatted-message>
+<formatted-message class="intl__messsage">
   <virtual>
     {getMessage(opts.id)}
   </virtual>

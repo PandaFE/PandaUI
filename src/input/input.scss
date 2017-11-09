@@ -1,9 +1,15 @@
 @import "~theme/var.default";
 
-.p-input {
+.input__outer {
+  display: block;
+  padding: 0 10px;
+  border-radius: $border-radius;
+  background: $white;
+}
+
+.input {
   width: 100%;
   min-height: 40px;
-  border-radius: $border-radius;
   border: none;
-  padding: 0 10px;
+  background: transparent;
 }
