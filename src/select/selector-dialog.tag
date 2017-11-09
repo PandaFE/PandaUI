@@ -24,7 +24,7 @@
     } = this.opts
 
     this.show = show
-    this.isMultiCols = !!(list[0] && list[0][0])
+    this.isMultiCols = !!(list[0] && list[0] instanceof Array)
     this.format = format
 
     this.handleClick = evt => {
