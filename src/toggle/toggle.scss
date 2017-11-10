@@ -3,11 +3,13 @@
 .toggle__outline {
   width: 20px;
   height: 20px;
-  border: 1px solid $grey;
   border-radius: $border-radius;
+  background: $white;
 }
 
 input:checked + .toggle__outline {
-  background: url(./check.png) center no-repeat;
+  background-image: url(./check.png);
+  background-position: center;
+  background-repeat: no-repeat;
   background-size: 15px;
 }

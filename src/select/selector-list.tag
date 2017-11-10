@@ -5,7 +5,7 @@
     onclick={handleClick}
   >
     <li
-      each={item, index in opts.list}
+      each={item, index in opts.options}
       class={select__option: true, active: activeIdx === index}
       data-index={index}
       key={index}
@@ -13,7 +13,8 @@
   </ul>
 
   <script>
-    this.extend(this.opts, this.opts.config)
+    this.mixin('form-element')
+
     const {
       format,
       select = () => {}
@@ -27,8 +28,14 @@
 
     this.handleClick = (evt) => {
       evt.stopPropagation()
-      this.activeIdx = Number(evt.target.dataset.index)
-      select(this.activeIdx)
+      this.applyChange(evt.target.dataset.index)
+    }
+
+    this.applyChange = (index = this.findDefault()) => {
+      this.activeIdx = Number(index)
+      if (~this.activeIdx) {
+        select(this.activeIdx)
+      }
     }
   </script>
 </selector-list>

@@ -2,7 +2,7 @@
   <p-dialog show={show} position="center" class-name="selector">
     <yield to="body">
       <ul if={!parent.isMultiCols} class="select__list popup" onclick={parent.handleClick}>
-        <li each={item, index in parent.opts.list} class="select__option" data-index={index} key={index}>
+        <li each={item, index in parent.opts.options} class="select__option" data-index={index} key={index}>
           {parent.parent.format(item)}
         </li>
       </ul>
@@ -17,14 +17,14 @@
     import '@/button'
 
     const {
-      list,
+      options,
       show,
       select = () => {},
       format = item => item
     } = this.opts
 
     this.show = show
-    this.isMultiCols = !!(list[0] && list[0] instanceof Array)
+    this.isMultiCols = !!(options[0] && options[0] instanceof Array)
     this.format = format
 
     this.handleClick = evt => {

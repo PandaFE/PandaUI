@@ -13,7 +13,7 @@
       this.dialog = new Dialog('selector-dialog', {
         show: this.opts.active,
         select: this.opts.select,
-        list: this.opts.list || []
+        options: this.opts.options || []
       })
       this.inited = true
     }

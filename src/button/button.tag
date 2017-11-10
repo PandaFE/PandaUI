@@ -1,4 +1,4 @@
-<p-button class="button">
+<p-button class="button {opts.className}">
   <button class="btn {opts.type}"><yield /></button>
 
   <script>

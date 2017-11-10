@@ -1,4 +1,5 @@
 <p-select class={select: true, active: active} onclick={toggle}>
+  <input type="hidden" name={opts.name}>
   <label class="select__label">{label}</label>
   <virtual
     data-is={opts.dialog ? 'selector-component' : 'selector-list'}
@@ -13,19 +14,19 @@
     import './selector-component'
 
     this.extend(this.opts, this.opts.config)
+    let selectedIdxes = [-1]
     const {
-      list,
+      options,
       format,
       onChange
     } = this.opts
 
     this.active = false
     this.label = '请选择'
-    this.selectedIdxes = -1
 
-    this.toggle = () => {
+    this.toggle = state => {
       this.update({
-        active: !this.active
+        active: state === false ? false : !this.active
       })
     }
 
@@ -34,21 +35,25 @@
     }
 
     this.confirm = (idxes, isArray) => {
-      this.selectedIdxes = isArray ? idxes : [idxes]
+      selectedIdxes = isArray ? idxes : [idxes]
       applyChange(isArray)
-      this.toggle()
+      this.toggle(false)
+    }
+
+    this.getValue = () => {
+      return selectedIdxes
     }
 
     const applyChange = (isArray) => {
-      const values = this.selectedIdxes.map((item, index) => {
-        return isArray ? list[index][item] : list[item]
+      const values = selectedIdxes.map((item, index) => {
+        return isArray ? options[index][item] : options[item]
       })
       this.label = this.format(...values)
       emitChange(isArray)
     }
 
     const emitChange = (isArray) => {
-      onChange && onChange(this.selectedIdxes)
+      onChange && onChange(selectedIdxes)
     }
   </script>
 </p-select>

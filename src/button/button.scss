@@ -11,4 +11,8 @@
   border: none;
   border-radius: $border-radius;
   background: green;
+
+  &:active {
+    opacity: .8;
+  }
 }
