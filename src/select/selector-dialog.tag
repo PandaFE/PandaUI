@@ -6,15 +6,25 @@
           {parent.parent.format(item)}
         </li>
       </ul>
+      <div if={parent.isMultiCols} class="row padding-v-lg">
+        <div
+          each={option, index in parent.opts.options}
+          class="column col-{12 / parent.parent.opts.options.length}"
+          key={index}
+        >
+          <scroll-list options={option} config={parent.parent.opts.config || parent.parent.opts}></scroll-list>
+        </div>
+      </div>
     </yield>
-    <yield if={parent.isMultiCols} to="footer">
-      <p-button onclick={parent.confirm}>OK</p-button>
+    <yield to="footer">
+      <p-button if={parent.isMultiCols} onclick={parent.confirm}>OK</p-button>
     </yield>
   </p-dialog>
 
   <script>
     import '@/dialog'
     import '@/button'
+    import '@/scrolllist'
 
     const {
       options,

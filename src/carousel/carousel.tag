@@ -62,12 +62,11 @@
       /* eslint-disable no-new */
       this.swiper = new Swipe({
         target: $stage,
-        loop: {
-          start: -itemInView * itemWidth,
-          end: swipeWidth - (itemInView + itemCount) * itemWidth,
-          max: swipeWidth - (itemInView * itemWidth),
-          min: -(itemInView + itemCount) * itemWidth
-        },
+        loop: true,
+        begin: -itemInView * itemWidth,
+        stop: swipeWidth - (itemInView + itemCount) * itemWidth,
+        max: swipeWidth - (itemInView * itemWidth),
+        min: -(itemInView + itemCount) * itemWidth,
         start: () => {
           stop()
         },

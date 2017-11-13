@@ -3,6 +3,7 @@
 .select {
   position: relative;
   display: block;
+  min-height: 40px;
   line-height: 40px;
   border-radius: $border-radius;
   background: $white;

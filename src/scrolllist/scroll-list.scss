@@ -1,0 +1,29 @@
+@import "~theme/var.default";
+
+.scroll__list-outer {
+  position: relative;
+  display: block;
+  height: 200px;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    position: absolute;
+    display: block;
+    top: 40%;
+    right: 0;
+    left: 0;
+    height: 0;
+    border-top: 1px solid $light;
+    content: '';
+  }
+
+  &::after {
+    z-index: -1;
+    top: 60%;
+  }
+}
+
+.scroll__item {
+  line-height: 40px;
+}

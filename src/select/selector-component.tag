@@ -10,10 +10,9 @@
 
     const init = () => {
       if (this.inited) return
+      const { active, select, options = [], default: dft } = this.opts
       this.dialog = new Dialog('selector-dialog', {
-        show: this.opts.active,
-        select: this.opts.select,
-        options: this.opts.options || []
+        show: active, select, options, default: dft, ...this.opts.config
       })
       this.inited = true
     }
