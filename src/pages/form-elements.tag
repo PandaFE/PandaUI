@@ -10,13 +10,13 @@
       type: 'input',
       name: 'input',
       label: '输入框',
-      default: '默认值'
+      defaultValue: '默认值'
     }, {
       type: 'select',
       name: 'select',
       label: '选择框',
       options: [1, 2, 3],
-      default: 3,
+      defaultValue: 3,
       float: true
     }, {
       type: 'checkbox',
@@ -37,7 +37,7 @@
     }]
 
     setTimeout(() => {
-      this.elements[0].default = 'jojo'
+      this.elements[0].defaultValue = 'jojo'
       this.update()
     }, 2000)
 

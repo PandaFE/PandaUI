@@ -16,9 +16,9 @@ riot.mixin('form-element', {
     this.extend(this.opts, this.opts.config)
   },
   findDefault () {
-    const { options, valueField = 'value', default: dft } = this.opts
+    const { options, valueField = 'value', defaultValue } = this.opts
     return this.findIndex(options, item => {
-      return (item[valueField] || item) === dft
+      return (item[valueField] || item) === defaultValue
     })
   }
 })

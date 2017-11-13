@@ -33,6 +33,9 @@
     }, {
       title: '表单元素块',
       route: '/formelement'
+    }, {
+      title: 'DatePicker',
+      route: '/datepicker'
     }]
   </script>
 </page-form>

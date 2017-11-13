@@ -4,7 +4,7 @@
     class="input"
     type="text"
     name={opts.name}
-    value={opts.default}
+    value={opts.defaultValue}
     onchange={handleChange}
   />
 
@@ -17,7 +17,7 @@
       this.applyChange(evt.target.value)
     }
 
-    this.applyChange = (value = this.opts.default) => {
+    this.applyChange = (value = this.opts.defaultValue || '') => {
       this.opts.onChange(value.trim())
     }
 

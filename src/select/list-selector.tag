@@ -1,4 +1,4 @@
-<selector-list>
+<list-selector>
   <ul
     show={active}
     class={select__list: true, float: opts.float}
@@ -17,10 +17,11 @@
 
     const {
       format,
+      options,
       select = () => {}
     } = this.opts
 
-    this.activeIdx = -1
+    this.activeIdx = this.findDefault()
 
     this.format = item => {
       return format ? format(item) : (item.label || item)
@@ -31,11 +32,11 @@
       this.applyChange(evt.target.dataset.index)
     }
 
-    this.applyChange = (index = this.findDefault()) => {
+    this.applyChange = (index = this.activeIdx) => {
       this.activeIdx = Number(index)
       if (~this.activeIdx) {
-        select(this.activeIdx)
+        select(options[this.activeIdx])
       }
     }
   </script>
-</selector-list>
+</list-selector>

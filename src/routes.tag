@@ -10,6 +10,7 @@
     <route path="/button"><page-button/ ></route>
     <route path="/dialog"><page-dialog/ ></route>
     <route path="/formelement"><page-form-elements/ ></route>
+    <route path="/datepicker"><page-date-picker/ ></route>
     <route path="*"><not-found /></route>
   </router>
 
@@ -24,6 +25,7 @@
     import './pages/button'
     import './pages/dialog'
     import './pages/form-elements'
+    import './pages/datepicker'
     import './pages/notfound'
   </script>
 </routes>

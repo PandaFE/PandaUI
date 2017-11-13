@@ -2,23 +2,22 @@
   <input type="hidden" name={opts.name}>
   <label class="select__label">{label}</label>
   <virtual
-    data-is={opts.dialog ? 'selector-component' : 'selector-list'}
+    data-is={opts.dialog ? 'dialog-selector' : 'list-selector'}
     active={active}
-    config={opts.config || opts}
     select={confirm}
+    config={opts.config || opts}
   ></virtual>
 
   <script>
     import './select.scss'
-    import './selector-list'
-    import './selector-component'
+    import './list-selector'
+    import './dialog-selector'
 
     this.extend(this.opts, this.opts.config)
-    let selectedIdxes = [-1]
+    let values = []
     const {
-      options,
       format,
-      onChange
+      onChange = () => {}
     } = this.opts
 
     this.active = false
@@ -30,30 +29,23 @@
       })
     }
 
-    this.format = (...reset) => {
-      return format ? format(...reset) : reset.join(' ')
+    this.format = (...rest) => {
+      return format ? format(...rest) : rest.join(' ')
     }
 
-    this.confirm = (idxes, isArray) => {
-      selectedIdxes = isArray ? idxes : [idxes]
-      applyChange(isArray)
+    this.confirm = value => {
+      values = value
+      applyChange(values)
       this.toggle(false)
     }
 
     this.getValue = () => {
-      return selectedIdxes
+      return values
     }
 
-    const applyChange = (isArray) => {
-      const values = selectedIdxes.map((item, index) => {
-        return isArray ? options[index][item] : options[item]
-      })
+    const applyChange = (...values) => {
       this.label = this.format(...values)
-      emitChange(isArray)
-    }
-
-    const emitChange = (isArray) => {
-      onChange && onChange(selectedIdxes)
+      onChange(values)
     }
   </script>
 </p-select>

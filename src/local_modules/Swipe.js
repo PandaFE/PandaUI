@@ -92,12 +92,12 @@ class Swipe {
     }
   }
 
-  _checkBoundry (...reset) {
+  _checkBoundry (...rest) {
     const { min, max, loop } = this.options
     if (loop) {
-      return this._checkLoopBounday(...reset)
+      return this._checkLoopBounday(...rest)
     } else {
-      let offset = reset[0]
+      let offset = rest[0]
       if (offset > max) {
         offset = max
       }

@@ -26,8 +26,8 @@
       switch: 'form-group'
     }
 
-    this.handleChange = (...reset) => {
-      console.log(name, type, ...reset)
+    this.handleChange = (...rest) => {
+      console.log(name, type, ...rest)
     }
 
     this.getValue = () => {

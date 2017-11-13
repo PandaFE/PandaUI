@@ -1,4 +1,4 @@
-<scroll-list class="scroll__list-outer">
+<scroll-list class="scroll__list-outer {opts.className}">
   <ul ref="list" class="scroll__list">
     <li
       each={item, index in opts.options}
@@ -12,18 +12,22 @@
     import './scroll-list.scss'
     import Swipe from '@/local_modules/Swipe'
 
-    this.extend(this.opts, this.opts.config)
-
-    this.activeIndex = 0
+    this.mixin('form-element')
 
     const {
-      distance = 40
+      distance = 40,
+      options,
+      onChange = () => {},
+      defaultValue
     } = this.opts
+
+    const defaultIndex = defaultValue ? this.findDefault(defaultValue) : -1
+    this.activeIndex = ~defaultIndex ? defaultIndex : 0
 
     this.on('mount', () => {
       const list = new Swipe({
         target: this.refs.list,
-        begin: distance * 2,
+        begin: distance * (2 - this.activeIndex),
         max: distance * 2,
         min: -distance * this.opts.options.length + distance * 3,
         axis: 'y',
@@ -38,9 +42,14 @@
           this.update({
             activeIndex: this.activeIndex - pos / distance
           })
+          onChange(options[this.activeIndex])
           return false
         }
       })
     })
+
+    this.applyChange = () => {
+      onChange(options[this.activeIndex])
+    }
   </script>
 </scroll-list>

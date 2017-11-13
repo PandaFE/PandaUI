@@ -1,9 +1,9 @@
 import riot from 'riot'
 
 class Dialog {
-  constructor (...reset) {
+  constructor (...rest) {
     this.id = this.createMountPoint()
-    this.tag = riot.mount(`#${this.id}`, ...reset)[0]
+    this.tag = riot.mount(`#${this.id}`, ...rest)[0]
     return this
   }
 
@@ -15,9 +15,9 @@ class Dialog {
     return id
   }
 
-  update (...reset) {
+  update (...rest) {
     if (this.tag) {
-      this.tag.update(...reset)
+      this.tag.update(...rest)
     }
   }
 
