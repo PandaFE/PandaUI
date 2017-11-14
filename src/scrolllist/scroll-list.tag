@@ -25,7 +25,7 @@
     this.activeIndex = ~defaultIndex ? defaultIndex : 0
 
     this.on('mount', () => {
-      const list = new Swipe({
+      this.list = new Swipe({
         target: this.refs.list,
         begin: distance * (2 - this.activeIndex),
         max: distance * 2,
@@ -38,7 +38,7 @@
           const absOffset = Math.abs(offset)
           const dir = offset / absOffset
           const pos = distance * (Math.floor(absOffset / distance) + (absOffset % distance > distance >> 2 ? 1 : 0)) * dir
-          list.move(pos, true)
+          this.list.move(pos, true)
           this.update({
             activeIndex: this.activeIndex - pos / distance
           })
@@ -51,5 +51,17 @@
     this.applyChange = () => {
       onChange(options[this.activeIndex])
     }
+
+    this.on('update', () => {
+      if (this.activeIndex > this.opts.options.length - 1) {
+        this.activeIndex = this.opts.options.length - 1
+        this.applyChange()
+        if (this.list) {
+          const min = -distance * this.opts.options.length + distance * 3
+          this.list.setOptions({min})
+          this.list.move(min)
+        }
+      }
+    })
   </script>
 </scroll-list>

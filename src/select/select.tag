@@ -14,12 +14,14 @@
     import './dialog-selector'
 
     this.extend(this.opts, this.opts.config)
-    let values = []
+    console.log(this.opts)
     const {
       format,
-      onChange = () => {}
+      onChange = () => {},
+      defaultValue = []
     } = this.opts
 
+    let values = defaultValue
     this.active = false
     this.label = '请选择'
 
@@ -30,7 +32,7 @@
     }
 
     this.format = (...rest) => {
-      return format ? format(...rest) : rest.join(' ')
+      return format ? format(...rest) : rest.join('.')
     }
 
     this.confirm = value => {
@@ -44,8 +46,21 @@
     }
 
     const applyChange = (...values) => {
-      this.label = this.format(...values)
-      onChange(values)
+      this.update({
+        label: this.format(...values)
+      })
+      onChange(...values)
     }
+
+    this.on('mount', () => {
+      // dialog惰性加载 因此需要手动渲染初始化的值
+      if (this.opts.dialog) {
+        applyChange(values)
+      }
+    })
+
+    this.on('update', () => {
+      console.log('jojo')
+    })
   </script>
 </p-select>

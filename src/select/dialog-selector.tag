@@ -39,7 +39,7 @@
       if (this.opts.active && !this.inited) {
         init()
       } else {
-        this.dialog.update({
+        this.dialog && this.dialog.update({
           show: this.opts.active
         })
       }

@@ -4,18 +4,21 @@
       <div class="row padding-v-lg">
         <scroll-list
           class-name="col-4"
-          options={parent.opts.options[parent.order.indexOf('y')]}
-          on-change={parent.handleChange.bind(this, parent.order.indexOf('y'))}
+          options={parent.data[parent.orderIdxes[0]]}
+          on-change={parent.handleChange.bind(this, parent.orderIdxes[0])}
+          default-value={parent.opts.defaultValue[parent.orderIdxes[0]]}
         ></scroll-list>
         <scroll-list
           class-name="col-4"
-          options={parent.opts.options[parent.order.indexOf('m')]}
-          on-change={parent.handleChange.bind(this, parent.order.indexOf('m'))}
+          options={parent.data[parent.orderIdxes[1]]}
+          on-change={parent.handleChange.bind(this, parent.orderIdxes[1])}
+          default-value={parent.opts.defaultValue[parent.orderIdxes[1]]}
         ></scroll-list>
         <scroll-list
           class-name="col-4"
-          options={parent.opts.options[parent.order.indexOf('d')]}
-          on-change={parent.handleChange.bind(this, parent.order.indexOf('d'))}
+          options={parent.data[parent.orderIdxes[2]]}
+          on-change={parent.handleChange.bind(this, parent.orderIdxes[2])}
+          default-value={parent.opts.defaultValue[parent.orderIdxes[2]]}
         ></scroll-list>
       </div>
     </yield>
@@ -35,15 +38,28 @@
     const {
       show,
       select = () => {},
-      order = 'ymd'
+      order = 'ymd',
+      oldest = 80,
+      yongest = 18
     } = this.opts
 
     this.show = show
     this.order = order
     this.value = []
+    this.data = []
+    this.orderIdxes = [
+      'ymd'.indexOf(order.charAt(0)),
+      'ymd'.indexOf(order.charAt(1)),
+      'ymd'.indexOf(order.charAt(2))
+    ]
 
     this.handleChange = (index, value) => {
       this.value[index] = value
+      if (index === 1) {
+        this.update({
+          data: getData(this.value[0], this.value[1])
+        })
+      }
     }
 
     this.cancel = () => {
@@ -51,8 +67,40 @@
     }
 
     this.confirm = () => {
-      console.log('jojo')
       select(this.value, true)
     }
+
+    const getDays = (year, month) => {
+      let daycount = new Date(year, month, 0).getDate()
+      let dayList = this.data[2] || []
+
+      if (daycount !== dayList.length) {
+        dayList = []
+        for (let i = 0; i < daycount; i++) {
+          dayList[i] = i + 1
+        }
+      }
+      return dayList
+    }
+
+    const getData = (y, m) => {
+      const year = new Date().getFullYear()
+      const maxYear = year - yongest
+      const minYear = year - oldest
+
+      let yearList = []
+      for (let i = minYear; i < maxYear + 1; i++) {
+        yearList[i - minYear] = i
+      }
+
+      let monthList = []
+      for (let i = 0; i < 12; i++) {
+        monthList[i] = i + 1
+      }
+
+      return [yearList, monthList, getDays(y || yearList[0], m || monthList[0])]
+    }
+
+    this.data = getData()
   </script>
 </date-picker-dialog-selector>

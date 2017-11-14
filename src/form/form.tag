@@ -1,6 +1,13 @@
 <p-form class="form__outer">
   <form class="form">
-    <form-element each={el in opts.elements} config={el} no-reorder></form-element>
+    <form-element
+      each={el, index in opts.elements}
+      on-change={parent.handleChange}
+      no-reorder
+      config={el}
+      key={index}
+      index={index}
+    ></form-element>
   </form>
 
   <script>
@@ -12,8 +19,8 @@
       })
     }
 
-    this.on('mount', () => {
-      console.log(this.getValue())
-    })
+    this.handleChange = (...rest) => {
+      console.log(...rest)
+    }
   </script>
 </p-form>

@@ -34,12 +34,11 @@
         value: 3,
         checked: true
       }]
+    }, {
+      label: '选择日期',
+      type: 'datepicker',
+      defaultValue: [1991, 1, 1]
     }]
-
-    setTimeout(() => {
-      this.elements[0].defaultValue = 'jojo'
-      this.update()
-    }, 2000)
 
     this.submit = () => {
       console.log(this.refs.form.getValue())

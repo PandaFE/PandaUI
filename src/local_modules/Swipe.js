@@ -210,6 +210,10 @@ class Swipe {
       this.lastStopPos += position
     })
   }
+
+  setOptions (options) {
+    extend(this.options, options)
+  }
 }
 
 export default Swipe

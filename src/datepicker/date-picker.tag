@@ -2,8 +2,7 @@
   <p-select
     dialog={true}
     on-change={handleChange}
-    selector-component="date-picker-dialog-selector"
-    options={data}
+    config={config}
   ></p-select>
 
   <script>
@@ -11,45 +10,26 @@
     import '@/select'
     import './date-picker-dialog-selector'
 
+    this.extend(this.opts, this.opts.config)
+
     const {
-      oldest = 80,
-      yongest = 18
+      onChange = () => {}
     } = this.opts
 
     this.data = [[], [], []]
-    this.value = []
+    this.value = null
 
     this.handleChange = value => {
-      console.log(value)
+      this.value = value
+      onChange(value)
     }
+    // 组装特殊的config对象
+    this.config = this.extend({
+      selectorComponent: 'date-picker-dialog-selector'
+    }, this.opts.config || this.opts)
 
-    const year = new Date().getFullYear()
-    const maxYear = year - yongest
-    const minYear = year - oldest
-
-    let yearList = []
-    for (let i = minYear; i < maxYear + 1; i++) {
-      yearList[i - minYear] = i
+    this.getValue = () => {
+      return this.value
     }
-
-    let monthList = []
-    for (let i = 0; i < 12; i++) {
-      monthList[i] = i + 1
-    }
-
-    const getDays = (year, month) => {
-      let daycount = new Date(year, month, 0).getDate()
-      let dayList = this.data[2]
-
-      if (daycount !== dayList.length) {
-        dayList = []
-        for (let i = 0; i < daycount; i++) {
-          dayList[i] = i + 1
-        }
-      }
-      return dayList
-    }
-
-    this.data = [yearList, monthList, getDays(yearList[0], monthList[0])]
   </script>
 </date-picker>
