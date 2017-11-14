@@ -14,7 +14,6 @@
     import './dialog-selector'
 
     this.extend(this.opts, this.opts.config)
-    console.log(this.opts)
     const {
       format,
       onChange = () => {},
@@ -32,7 +31,7 @@
     }
 
     this.format = (...rest) => {
-      return format ? format(...rest) : rest.join('.')
+      return format ? format(...rest) : (rest.length ? rest.join(' ') : '请选择')
     }
 
     this.confirm = value => {
@@ -57,10 +56,6 @@
       if (this.opts.dialog) {
         applyChange(values)
       }
-    })
-
-    this.on('update', () => {
-      console.log('jojo')
     })
   </script>
 </p-select>

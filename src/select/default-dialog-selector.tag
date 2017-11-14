@@ -12,8 +12,6 @@
 
   <script>
     import '@/dialog'
-    import '@/button'
-    import '@/scrolllist'
 
     const {
       show,

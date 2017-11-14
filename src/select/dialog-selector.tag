@@ -14,7 +14,7 @@
     this.inited = false
     this.dialog = null
 
-    const component = options[0] && !(options[0] instanceof Array)
+    const component = !(options[0] instanceof Array)
       ? 'default-dialog-selector'
       : (selectorComponent || 'default-custom-dialog-selector')
 
