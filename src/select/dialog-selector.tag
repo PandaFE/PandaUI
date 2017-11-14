@@ -7,14 +7,14 @@
     this.extend(this.opts, this.opts.config)
 
     const {
-      options = [],
+      options,
       selectorComponent
     } = this.opts
 
     this.inited = false
     this.dialog = null
 
-    const component = !(options[0] instanceof Array)
+    const component = options && !(options[0] instanceof Array)
       ? 'default-dialog-selector'
       : (selectorComponent || 'default-custom-dialog-selector')
 
