@@ -16,17 +16,17 @@
     }
 
     this.item = [{
-      img: 'img/carousel/img_01.png'
+      img: '/static/img/carousel/img_01.png'
     }, {
-      img: 'img/carousel/img_02.png'
+      img: '/static/img/carousel/img_02.png'
     }, {
-      img: 'img/carousel/img_03.png'
+      img: '/static/img/carousel/img_03.png'
     }, {
-      img: 'img/carousel/img_04.png'
+      img: '/static/img/carousel/img_04.png'
     }, {
-      img: 'img/carousel/img_05.png'
+      img: '/static/img/carousel/img_05.png'
     }, {
-      img: 'img/carousel/img_06.png'
+      img: '/static/img/carousel/img_06.png'
     }]
   </script>
 </page-carousel>

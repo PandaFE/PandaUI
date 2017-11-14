@@ -1,4 +1,6 @@
 var path = require('path')
+var utils = require('./utils')
+var config = require('./config')
 
 function resolve (dir) {
   return path.join(__dirname, '../', dir)
@@ -9,9 +11,11 @@ module.exports = {
     main: './entries/main.js'
   },
   output: {
-    path: resolve('dist'),
+    path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: '/'
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.tag', '.json'],
@@ -53,7 +57,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'img/[name].[hash:7].[ext]'
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -61,7 +65,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: 'fonts/[name].[hash:7].[ext]'
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]

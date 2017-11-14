@@ -1,7 +1,7 @@
 <sample>
   <div class="sample__page">
     <div class="page__brief">
-      <img src='/img/logo.png' alt="熊猫UILOGO">
+      <img src='static/img/logo.png' alt="熊猫UILOGO">
       <p class="slogan">熊猫UI,专注UI5000年</p>
     </div>
 

@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'production'
 
+var config = require('./config')
 var opn = require('opn')
 var path = require('path')
 var express = require('express')
@@ -51,7 +52,8 @@ app.use(devMiddleware)
 // compilation error display
 app.use(hotMiddleware)
 
-app.use(express.static(path.posix.join(__dirname, '..', 'static')))
+var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
+app.use(staticPath, express.static('./static'))
 
 var uri = 'http://localhost:' + port
 
