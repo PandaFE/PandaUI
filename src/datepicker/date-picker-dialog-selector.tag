@@ -6,19 +6,19 @@
           class-name="col-4"
           options={parent.data[parent.orderIdxes[0]]}
           on-change={parent.handleChange.bind(this, parent.orderIdxes[0])}
-          default-value={parent.opts.defaultValue[parent.orderIdxes[0]]}
+          default-value={parent.defaultValue[parent.orderIdxes[0]]}
         ></scroll-list>
         <scroll-list
           class-name="col-4"
           options={parent.data[parent.orderIdxes[1]]}
           on-change={parent.handleChange.bind(this, parent.orderIdxes[1])}
-          default-value={parent.opts.defaultValue[parent.orderIdxes[1]]}
+          default-value={parent.defaultValue[parent.orderIdxes[1]]}
         ></scroll-list>
         <scroll-list
           class-name="col-4"
           options={parent.data[parent.orderIdxes[2]]}
           on-change={parent.handleChange.bind(this, parent.orderIdxes[2])}
-          default-value={parent.opts.defaultValue[parent.orderIdxes[2]]}
+          default-value={parent.defaultValue[parent.orderIdxes[2]]}
         ></scroll-list>
       </div>
     </yield>
@@ -40,11 +40,13 @@
       select = () => {},
       order = 'ymd',
       oldest = 80,
-      yongest = 18
+      yongest = 18,
+      defaultValue = []
     } = this.opts
 
     this.show = show
     this.order = order
+    this.defaultValue = defaultValue
     this.value = []
     this.data = []
     this.orderIdxes = [
