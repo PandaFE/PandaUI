@@ -15,4 +15,10 @@
   &:active {
     opacity: .8;
   }
+
+  &.disabled {
+    background: $light;
+    color: $grey;
+    pointer-events: none;
+  }
 }

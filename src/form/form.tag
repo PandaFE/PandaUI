@@ -13,14 +13,27 @@
   <script>
     import './element'
 
+    const {
+      onChange = () => {}
+    } = this.opts
+    let inValidCode = 0
+
     this.getValue = () => {
       return this.tags['form-element'].map(item => {
         return item.getValue()
       })
     }
 
-    this.handleChange = (...rest) => {
-      console.log(...rest)
+    this.handleChange = (isValid, index, value) => {
+      if (isValid) {
+        inValidCode -= index + 1
+      } else {
+        inValidCode += index + 1
+      }
+      if (inValidCode < 0) {
+        inValidCode = 0
+      }
+      onChange(!inValidCode)
     }
   </script>
 </p-form>

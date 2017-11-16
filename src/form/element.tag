@@ -17,9 +17,11 @@
     this.extend(this.opts, this.opts.config)
 
     const {
+      name,
       index,
+      required,
       pattern,
-      validate = () => true,
+      validate,
       onChange = () => {}
     } = this.opts
 
@@ -34,13 +36,22 @@
       datepicker: 'date-picker'
     }
 
-    this.handleChange = (...rest) => {
-      if (pattern && pattern.test) {
-        this.isValid = pattern.test(rest[0])
-      } else {
-        this.isValid = validate(...rest)
+    const isValid = (...rest) => {
+      const [value] = rest
+      if (validate) {
+        return validate(...rest)
       }
-      onChange(this.isValid, index, ...rest)
+      if (required) {
+        return value && (value.join ? value.join('') : value.toString().trim())
+      }
+      if (pattern) {
+        return pattern.test ? pattern.test(value) : true
+      }
+      return true
+    }
+
+    this.handleChange = (...rest) => {
+      onChange(!!isValid(...rest), index, ...rest)
     }
 
     this.getValue = () => {

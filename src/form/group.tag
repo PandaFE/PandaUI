@@ -5,7 +5,7 @@
     each={item, index in opts.options}
     config={parent.extend({}, parent.opts.config || parent.opts, item)}
     id={parent.opts.id + index}
-    on-change={parent.opts.onChange}
+    on-change={parent.handleChange}
     key={index}
   ></toggle>
 
@@ -14,7 +14,16 @@
 
     this.extend(this.opts, this.opts.config)
 
-    this.isToggle = ~['checkbox', 'radio', 'switch'].indexOf(this.opts.type)
+    const {
+      options,
+      type
+    } = this.opts
+
+    let values = {}
+    let subTagChangeInvoke = 0
+    let shouldEmitChange = false
+
+    this.isToggle = ~['checkbox', 'radio', 'switch'].indexOf(type)
 
     this.getValue = () => {
       if (this.isToggle) {
@@ -22,6 +31,27 @@
           const result = item.getValue()
           return result.checked ? result.value : ''
         }).filter(item => item)
+      }
+    }
+
+    this.handleChange = (...rest) => {
+      if (this.isToggle) {
+        const [value, state] = rest
+        if (state) {
+          values[value] = true
+        } else {
+          delete values[value]
+        }
+      }
+      emitChange()
+    }
+
+    const emitChange = () => {
+      if (!shouldEmitChange && ++subTagChangeInvoke === options.length) {
+        shouldEmitChange = true
+      }
+      if (shouldEmitChange) {
+        this.opts.onChange(Object.keys(values))
       }
     }
   </script>
