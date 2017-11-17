@@ -31,7 +31,7 @@
       title: '进度条',
       route: '/progress'
     }, {
-      title: '表单元素块',
+      title: '表单示例',
       route: '/formelement'
     }, {
       title: 'DatePicker',

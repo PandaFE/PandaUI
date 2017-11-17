@@ -5,17 +5,20 @@
     type="text"
     name={opts.name}
     value={opts.defaultValue}
-    onchange={handleChange}
+    onkeydown={handleChange}
   />
 
   <script>
     import './input.scss'
+    import debounce from 'lodash/debounce'
 
     this.mixin('form-element')
 
-    this.handleChange = evt => {
+    this.handleChange = debounce(evt => {
       this.applyChange(evt.target.value)
-    }
+    }, 300, {
+      maxWait: 1000
+    })
 
     this.applyChange = (value = this.opts.defaultValue || '') => {
       this.opts.onChange(value.trim())
