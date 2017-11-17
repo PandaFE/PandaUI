@@ -35,7 +35,7 @@
         label: '选项3',
         value: 3,
         checked: true
-      }],
+      }, '选项4'],
       required: true
     }, {
       name: 'datepicker',

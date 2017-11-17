@@ -1,7 +1,7 @@
 <list-selector>
   <ul
     show={active}
-    class={select__list: true, float: opts.float}
+    class={select__list: true, float: !opts.static}
     onclick={handleClick}
   >
     <li

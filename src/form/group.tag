@@ -3,7 +3,7 @@
   <toggle
     if={isToggle}
     each={item, index in opts.options}
-    config={parent.extend({}, parent.opts.config || parent.opts, item)}
+    config={parent.getConfig(item)}
     id={parent.opts.id + index}
     on-change={parent.handleChange}
     key={index}
@@ -24,6 +24,16 @@
     let shouldEmitChange = false
 
     this.isToggle = ~['checkbox', 'radio', 'switch'].indexOf(type)
+
+    this.getConfig = item => {
+      if (!item.label) {
+        item = {
+          label: item,
+          value: item
+        }
+      }
+      return this.extend({}, this.opts.config || this.opts, item)
+    }
 
     this.getValue = () => {
       if (this.isToggle) {
