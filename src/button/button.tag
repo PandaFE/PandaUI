@@ -1,5 +1,5 @@
-<p-button class="button-tag">
-  <button class="button {opts.className} {opts.type} {disabled: opts.disabled}" onclick={onclick}><yield /></button>
+<p-button class="button {opts.className} {opts.type}">
+  <button class="btn" onclick={onclick}><yield /></button>
 
   <script>
     import './button.scss'

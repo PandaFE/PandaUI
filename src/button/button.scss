@@ -1,9 +1,8 @@
 @import "~theme/var.default";
 
 .button {
+  display: block;
   width: 100%;
-  min-height: 40px;
-  border: none;
   border-radius: $border-radius;
   background: green;
 
@@ -11,9 +10,19 @@
     opacity: .8;
   }
 
-  &.disabled {
+  &[disabled] {
     background: $light;
     color: $grey;
-    pointer-events: none;
+
+    .btn {
+      pointer-events: none;
+    }
   }
+}
+
+.btn {
+  width: 100%;
+  min-height: 40px;
+  border: none;
+  background: none;
 }
