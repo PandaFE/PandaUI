@@ -13,10 +13,6 @@
   &[disabled] {
     background: $light;
     color: $grey;
-
-    .btn {
-      pointer-events: none;
-    }
   }
 }
 
@@ -25,4 +21,8 @@
   min-height: 40px;
   border: none;
   background: none;
+
+  &.disabled {
+    pointer-events: none;
+  }
 }
