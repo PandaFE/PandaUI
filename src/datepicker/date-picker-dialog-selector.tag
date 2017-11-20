@@ -49,6 +49,7 @@
     this.defaultValue = defaultValue
     this.value = []
     this.data = []
+    this.oldValue = []
     this.orderIdxes = [
       'ymd'.indexOf(order.charAt(0)),
       'ymd'.indexOf(order.charAt(1)),
@@ -65,11 +66,12 @@
     }
 
     this.cancel = () => {
-      this.show = false
+      select(this.oldValue)
     }
 
     this.confirm = () => {
-      select(this.value, true)
+      this.oldValue = this.extend([], this.value)
+      select(this.value)
     }
 
     const getDays = (year, month) => {
@@ -91,8 +93,8 @@
       const minYear = year - oldest
 
       let yearList = []
-      for (let i = minYear; i < maxYear + 1; i++) {
-        yearList[i - minYear] = i
+      for (let i = maxYear; i >= minYear; i--) {
+        yearList[maxYear - i] = i
       }
 
       let monthList = []
