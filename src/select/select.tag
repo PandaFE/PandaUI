@@ -15,7 +15,7 @@
 
     this.extend(this.opts, this.opts.config)
     const {
-      format = value ={
+      format = value => {
         if (value.join) return value.join(' ')
         return value.label || value || '请选择'
       },
