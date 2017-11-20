@@ -1,10 +1,25 @@
 import riot from 'riot'
 
-class Dialog {
+class Component {
   constructor (...rest) {
     this.id = this.createMountPoint()
-    this.tag = riot.mount(`#${this.id}`, ...rest)[0]
+    this.tag = riot.mount(`#${this.id}`, ...this.normalize(...rest))[0]
     return this
+  }
+
+  normalize (...rest) {
+    let [tagName, options] = rest
+    if (typeof tagName !== 'string') {
+      options = tagName
+      tagName = this.getDefaultTag()
+      return [tagName, options]
+    } else {
+      return rest
+    }
+  }
+
+  getDefaultTag () {
+    return 'default'
   }
 
   createMountPoint () {
@@ -40,4 +55,4 @@ class Dialog {
   }
 }
 
-export default Dialog
+export default Component

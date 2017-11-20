@@ -1,5 +1,5 @@
 <date-picker-dialog-selector>
-  <p-dialog show={show} position="center" class-name="date-picker-selector">
+  <dialog-template show={show} position="center" class-name="date-picker-selector">
     <yield to="body">
       <div class="row padding-v-lg">
         <scroll-list
@@ -28,10 +28,10 @@
         <div class="col-6 date-picker__btn" onclick={parent.confirm}>确认</div>
       </div>
     </yield>
-  </p-dialog>
+  </dialog-template>
 
   <script>
-    import '@/dialog'
+    import '@/dialog/dialog-template'
     import '@/button'
     import '@/scrolllist'
 

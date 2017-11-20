@@ -1,6 +1,8 @@
 <dialog-selector>
+  <p-dialog ref="dialog" component={component} config={opts} />
+
   <script>
-    import Dialog from '@/dialog/Ctr'
+    import '@/dialog'
     import './default-dialog-selector'
     import './default-custom-dialog-selector'
 
@@ -13,35 +15,22 @@
 
     this.inited = false
     this.dialog = null
-
-    const component = options && !(options[0] instanceof Array)
+    this.component = options && !(options[0] instanceof Array)
       ? 'default-dialog-selector'
       : (selectorComponent || 'default-custom-dialog-selector')
 
-    const init = () => {
-      if (this.inited) return
-      const { active, select, defaultValue } = this.opts
-      this.dialog = new Dialog(component, {
-        show: active,
-        select,
-        options,
-        defaultValue,
-        ...this.opts.config
-      })
+    this.on('mount', () => {
+      this.dialog = this.refs.dialog
       this.inited = true
-    }
-
-    this.on('unmount', () => {
-      this.dialog && this.dialog.destroy()
     })
 
     this.on('update', () => {
-      if (this.opts.active && !this.inited) {
-        init()
-      } else {
-        this.dialog && this.dialog.update({
-          show: this.opts.active
-        })
+      if (this.inited && this.dialog) {
+        if (this.opts.active) {
+          this.dialog.show()
+        } else {
+          this.dialog.hide()
+        }
       }
     })
   </script>

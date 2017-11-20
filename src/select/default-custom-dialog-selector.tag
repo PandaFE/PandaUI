@@ -1,5 +1,5 @@
 <default-custom-dialog-selector>
-  <p-dialog show={show} position="center" class-name="selector">
+  <dialog-template show={show} position="center" class-name="selector">
     <yield to="body">
       <div class="row padding-v-lg">
         <div
@@ -7,35 +7,39 @@
           class="column col-{12 / parent.parent.opts.options.length}"
           key={index}
         >
-          <scroll-list options={option} config={parent.parent.opts.config || parent.parent.opts}></scroll-list>
+          <!--options 选项冲突-->
+          <scroll-list
+            options={option}
+            on-change={parent.parent.onChange.bind(parent.parent, index)}
+          ></scroll-list>
         </div>
       </div>
     </yield>
     <yield to="footer">
       <p-button onclick={parent.confirm}>OK</p-button>
     </yield>
-  </p-dialog>
+  </dialog-template>
 
   <script>
-    import '@/dialog'
+    import '@/dialog/dialog-template'
     import '@/button'
     import '@/scrolllist'
 
     const {
       show,
-      select = () => {},
-      format = item => item
+      select = () => {}
     } = this.opts
 
     this.show = show
-    this.format = format
 
-    this.handleClick = evt => {
-      select(Number(evt.target.dataset.index))
+    let values = []
+
+    this.onChange = (index, value) => {
+      values[index] = value
     }
 
     this.confirm = () => {
-      select()
+      select(values)
     }
   </script>
 </default-custom-dialog-selector>

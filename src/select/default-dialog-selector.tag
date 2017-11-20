@@ -1,5 +1,5 @@
 <default-dialog-selector>
-  <p-dialog show={show} position="center" class-name="selector">
+  <dialog-template show={show} position="center" class-name="selector">
     <yield to="body">
       <ul class="select__list popup" onclick={parent.handleClick}>
         <li each={item, index in parent.opts.options} class="select__option" data-index={index} key={index}>
@@ -8,13 +8,14 @@
       </ul>
       </div>
     </yield>
-  </p-dialog>
+  </dialog-template>
 
   <script>
-    import '@/dialog'
+    import '@/dialog/dialog-template'
 
     const {
       show,
+      options,
       select = () => {},
       format = item => item
     } = this.opts
@@ -23,7 +24,7 @@
     this.format = format
 
     this.handleClick = evt => {
-      select(Number(evt.target.dataset.index))
+      select(options[Number(evt.target.dataset.index)])
     }
 
     this.confirm = () => {

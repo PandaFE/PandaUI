@@ -4,13 +4,14 @@
     <route path="/carousel"><page-carousel /></route>
     <route path="/form"><page-form /></route>
     <route path="/select"><page-select /></route>
-    <route path="/intl"><page-intl/ ></route>
-    <route path="/input"><page-input/ ></route>
-    <route path="/toggle"><page-toggle/ ></route>
-    <route path="/button"><page-button/ ></route>
-    <route path="/dialog"><page-dialog/ ></route>
-    <route path="/formelement"><page-form-elements/ ></route>
-    <route path="/datepicker"><page-date-picker/ ></route>
+    <route path="/intl"><page-intl /></route>
+    <route path="/input"><page-input /></route>
+    <route path="/toggle"><page-toggle /></route>
+    <route path="/button"><page-button /></route>
+    <route path="/dialog"><page-dialog /></route>
+    <route path="/formelement"><page-form-elements /></route>
+    <route path="/datepicker"><page-date-picker /></route>
+    <route path="/alert"><page-alert /></route>
     <route path="*"><not-found /></route>
   </router>
 
@@ -26,6 +27,7 @@
     import './pages/dialog'
     import './pages/form-elements'
     import './pages/datepicker'
+    import './pages/alert'
     import './pages/notfound'
   </script>
 </routes>

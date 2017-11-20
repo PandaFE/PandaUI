@@ -1,0 +1,26 @@
+@import "~theme/var.default";
+
+.alert {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 8px 20px;
+  min-height: 40px;
+  line-height: 20px;
+  text-align: center;
+  word-wrap: break-word;
+  background: $light;
+  transform: translate3d(0, -100%, 0);
+  transition: transform .3s ease-out;
+
+  &.bottom {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  &.in {
+    transform: translate3d(0, 0, 0);
+  }
+}

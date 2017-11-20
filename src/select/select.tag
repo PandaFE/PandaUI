@@ -36,8 +36,8 @@
       if (format) {
         return format(item)
       }
-      if (item.join) {
-        return item.join(' ').trim() || '请选择'
+      if (item && item.join) {
+        return item.join('-').trim() || '请选择'
       }
       return item ? (item[labelField] || item) : '请选择'
     }
