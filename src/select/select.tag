@@ -15,12 +15,11 @@
 
     this.extend(this.opts, this.opts.config)
     const {
-      format = value => {
-        if (value.join) return value.join(' ')
-        return value.label || value || '请选择'
-      },
+      format,
       onChange = () => {},
-      defaultValue = []
+      defaultValue = [],
+      valueField = 'value',
+      labelField = 'label'
     } = this.opts
 
     let values = defaultValue
@@ -33,8 +32,14 @@
       })
     }
 
-    this.format = value => {
-      return format(value)
+    this.format = item => {
+      if (format) {
+        return format(item)
+      }
+      if (item.join) {
+        return item.join(' ').trim() || '请选择'
+      }
+      return item ? (item[labelField] || item) : '请选择'
     }
 
     this.confirm = value => {
@@ -44,7 +49,7 @@
     }
 
     this.getValue = () => {
-      return values
+      return values[valueField] || values
     }
 
     const applyChange = (...values) => {

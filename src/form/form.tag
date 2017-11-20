@@ -16,7 +16,7 @@
     const {
       onChange = () => {}
     } = this.opts
-    let inValidCode = 0
+    let stateArr = []
 
     this.getValue = () => {
       return this.tags['form-element'].map(item => {
@@ -26,14 +26,11 @@
 
     this.handleChange = (isValid, index, value) => {
       if (isValid) {
-        inValidCode -= index + 1
+        stateArr[index] = 0
       } else {
-        inValidCode += index + 1
+        stateArr[index] = 1
       }
-      if (inValidCode < 0) {
-        inValidCode = 0
-      }
-      onChange(!inValidCode)
+      onChange(!stateArr.reduce((sum, value) => (sum + value), 0))
     }
   </script>
 </p-form>

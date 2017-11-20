@@ -36,6 +36,8 @@
       this.activeIdx = Number(index)
       if (~this.activeIdx) {
         select(options[this.activeIdx])
+      } else {
+        select([])
       }
     }
   </script>

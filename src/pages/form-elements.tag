@@ -17,7 +17,6 @@
       name: 'select',
       label: '选择框',
       options: [1, 2, 3],
-      defaultValue: 3,
       float: true,
       required: true
     }, {
@@ -42,6 +41,15 @@
       label: '选择日期',
       type: 'datepicker',
       defaultValue: [1991, 1, 1],
+      required: true
+    }, {
+      label: 'select',
+      name: 'select',
+      type: 'select',
+      options: [{
+        label: 'option 1',
+        value: 1
+      }],
       required: true
     }]
 
