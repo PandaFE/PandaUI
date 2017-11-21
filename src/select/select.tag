@@ -45,7 +45,6 @@
     this.confirm = value => {
       values = value
       applyChange(values)
-      this.toggle(false)
     }
 
     this.getValue = () => {
@@ -54,7 +53,8 @@
 
     const applyChange = (...values) => {
       this.update({
-        label: this.format(...values)
+        label: this.format(...values),
+        active: false // 选择之后顺便关闭对话框 可以减少一次update
       })
       onChange(...values)
     }

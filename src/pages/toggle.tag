@@ -5,6 +5,7 @@
     options={[{value: 1, label: 'label1'}, {value: 2, label: 'label2'}]}
   ></form-element>
   <toggle>checkbox</toggle>
+  <toggle disabled={true} checked={true}>disabeld checkbox</toggle>
 
   <script>
     import '@/form/element'

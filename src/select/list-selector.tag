@@ -18,13 +18,14 @@
     const {
       format,
       options,
+      labelField = 'label',
       select = () => {}
     } = this.opts
 
     this.activeIdx = this.findDefault()
 
     this.format = item => {
-      return format ? format(item) : (item.label || item)
+      return format ? format(item) : (item ? (item[labelField] || item) : '--')
     }
 
     this.handleClick = (evt) => {

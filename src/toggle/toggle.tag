@@ -7,8 +7,9 @@
       name={opts.name}
       onchange={handleChange}
       checked={opts.checked}
+      disabled={opts.disabled}
     />
-    <span class="toggle__outline inner-inline-block"></span>
+    <span class="toggle__outline inner-inline-block {disabled: opts.disabled}"></span>
     <span class="toggle__text inner-inline-block"><yield />{opts.label}</span>
   </label>
 
