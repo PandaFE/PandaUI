@@ -32,6 +32,7 @@
         item = {
           label: item[labelField] || item,
           value: item[valueField] || item
+        }
       }
       return this.extend({}, this.opts.config || this.opts, item)
     }
