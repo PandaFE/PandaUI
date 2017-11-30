@@ -16,7 +16,9 @@
 
     const {
       options,
-      type
+      type,
+      labelField = 'label',
+      valueField = 'value'
     } = this.opts
 
     let values = {}
@@ -28,9 +30,8 @@
     this.getConfig = item => {
       if (!item.label) {
         item = {
-          label: item,
-          value: item
-        }
+          label: item[labelField] || item,
+          value: item[valueField] || item
       }
       return this.extend({}, this.opts.config || this.opts, item)
     }
