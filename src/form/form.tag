@@ -30,7 +30,11 @@
       } else {
         stateArr[index] = 1
       }
-      onChange(!stateArr.reduce((sum, value) => (sum + value), 0))
+      onChange(
+        !stateArr.reduce((sum, value) => (sum + value), 0),
+        this.opts.elements[index] && this.opts.elements[index].name,
+        value
+      )
     }
   </script>
 </p-form>
